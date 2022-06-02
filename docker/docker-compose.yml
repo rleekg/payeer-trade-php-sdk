@@ -1,0 +1,13 @@
+services:
+    php-cli:
+        build:
+            context: ./
+            args:
+                USER_ID: ${USER_ID:-1000}
+        volumes:
+            - ../:/home/dev/app/
+            - backend_cache:/home/dev/.composer
+        extra_hosts:
+            - host.docker.internal:host-gateway
+volumes:
+    backend_cache:
